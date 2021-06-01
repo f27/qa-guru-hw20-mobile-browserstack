@@ -1,10 +1,12 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.MobileBy.AccessibilityId;
 import static io.qameta.allure.Allure.step;
@@ -34,5 +36,19 @@ public class WikiTests extends TestBase {
         step("Verify success search", () -> {
             $$(MobileBy.id("org.wikipedia.alpha:id/search_results_list")).shouldHave(sizeGreaterThan(0));
         });
+    }
+
+    @Test
+    @DisplayName("Onborading page test")
+    void onboardingPageTest() {
+        step("Open app", () -> {
+            open();
+        });
+
+        step("Onboarding page should have text 'The Free Encyclopedia …in over 300 languages'", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("The Free Encyclopedia …in over 300 languages"));
+        });
+
+
     }
 }
