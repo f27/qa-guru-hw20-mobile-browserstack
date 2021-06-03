@@ -34,7 +34,7 @@ public class WikiTests extends TestBase {
         });
 
         step("Verify success search", () -> {
-            $$(MobileBy.id("org.wikipedia.alpha:id/search_results_list")).shouldHave(sizeGreaterThan(0));
+            $$(MobileBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0));
         });
     }
 
